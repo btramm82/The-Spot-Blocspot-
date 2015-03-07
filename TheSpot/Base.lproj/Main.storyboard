@@ -16,20 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DoO-vy-YDX">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Local Search" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-qx-XfV">
+                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="9pv-A4-QxB" eventType="editingDidEndOnExit" id="9Lc-LY-9MA"/>
+                                </connections>
+                            </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikA-JC-K5a">
-                                <rect key="frame" x="0.0" y="108" width="320" height="405"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="425"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map View" id="ffw-ly-GIn"/>
                     <connections>
-                        <outlet property="mapSearch" destination="DoO-vy-YDX" id="kbm-yK-nmH"/>
                         <outlet property="mapView" destination="ikA-JC-K5a" id="HDN-kf-fyT"/>
+                        <outlet property="searchText" destination="OaV-qx-XfV" id="nED-Bc-djw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -125,7 +129,6 @@
         <!--MapView-->
         <scene sceneID="YGb-XG-qpX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="13G-PY-wpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ae0-GA-0an" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MapView" image="second" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -138,8 +141,26 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="fXm-ql-VGP"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="13G-PY-wpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3" y="-317"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2ql-bB-47f">
+            <objects>
+                <viewController id="VkP-4R-phX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gJy-1P-iwz"/>
+                        <viewControllerLayoutGuide type="bottom" id="OSV-KH-fWh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9TB-Ce-dQ3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zhe-9k-V25" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

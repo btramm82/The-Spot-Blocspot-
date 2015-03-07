@@ -10,7 +10,11 @@
 #import <MapKit/MapKit.h>
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *searchText;
+@property (strong, nonatomic) NSMutableArray *matchingItems;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)textFieldReturn:(id)sender;
+
 
 @end

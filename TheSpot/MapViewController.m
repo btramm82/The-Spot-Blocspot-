@@ -12,12 +12,16 @@
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) IBOutlet UISearchBar *mapSearch;
+
 
 
 @end
 
 @implementation MapViewController
+
+
+#pragma mark - Initializer
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,16 +50,49 @@
     point.coordinate = userLocation.coordinate;
     point.title = @"Current location";
     
-    [self.mapView addAnnotation:point];
     
 }
 
+#pragma mark - Map Searching
 
+- (void) performSearch {
+    MKLocalSearchRequest *request =
+    [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = _searchText.text;
+    request.region = _mapView.region;
+    
+    _matchingItems = [[NSMutableArray alloc] init];
+    
+    MKLocalSearch *search =
+    [[MKLocalSearch alloc]initWithRequest:request];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else
+            for (MKMapItem *item in response.mapItems) {
+                [_matchingItems addObject:item];
+                MKPointAnnotation *annotation =
+                [[MKPointAnnotation alloc]init];
+                annotation.coordinate = item.placemark.coordinate;
+                annotation.title = item.name;
+                [_mapView addAnnotation:annotation];
+                NSLog(@"name = %@", item.name);
+                NSLog(@"Phone = %@", item.phoneNumber);}
+        }];
+}
 
+- (IBAction)textFieldReturn:(id)sender {
+    [sender resignFirstResponder];
+    [_mapView removeAnnotations:[_mapView annotations]];
+    [self performSearch];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end

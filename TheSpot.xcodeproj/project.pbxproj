@@ -15,6 +15,7 @@
 		196F57CB1AAACE1100B96ACB /* TheSpotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57CA1AAACE1100B96ACB /* TheSpotTests.m */; };
 		196F57D51AAACE2300B96ACB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196F57D41AAACE2300B96ACB /* CoreLocation.framework */; };
 		196F57D71AAACE2D00B96ACB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196F57D61AAACE2D00B96ACB /* MapKit.framework */; };
+		19F498F91AAAF28A0064E421 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F498F81AAAF28A0064E421 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		196F57CA1AAACE1100B96ACB /* TheSpotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheSpotTests.m; sourceTree = "<group>"; };
 		196F57D41AAACE2300B96ACB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		196F57D61AAACE2D00B96ACB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		19F498F71AAAF28A0064E421 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		19F498F81AAAF28A0064E421 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 			children = (
 				196F57AF1AAACE1100B96ACB /* AppDelegate.h */,
 				196F57B01AAACE1100B96ACB /* AppDelegate.m */,
+				19F498F71AAAF28A0064E421 /* MapViewController.h */,
+				19F498F81AAAF28A0064E421 /* MapViewController.m */,
 				196F57B81AAACE1100B96ACB /* Main.storyboard */,
 				196F57BB1AAACE1100B96ACB /* Images.xcassets */,
 				196F57BD1AAACE1100B96ACB /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F498F91AAAF28A0064E421 /* MapViewController.m in Sources */,
 				196F57B11AAACE1100B96ACB /* AppDelegate.m in Sources */,
 				196F57AE1AAACE1100B96ACB /* main.m in Sources */,
 			);
@@ -416,6 +422,7 @@
 				196F57D01AAACE1100B96ACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		196F57D11AAACE1100B96ACB /* Build configuration list for PBXNativeTarget "TheSpotTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				196F57D31AAACE1100B96ACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

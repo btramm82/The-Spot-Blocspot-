@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		196F57AE1AAACE1100B96ACB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57AD1AAACE1100B96ACB /* main.m */; };
 		196F57B11AAACE1100B96ACB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57B01AAACE1100B96ACB /* AppDelegate.m */; };
-		196F57B41AAACE1100B96ACB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57B31AAACE1100B96ACB /* FirstViewController.m */; };
-		196F57B71AAACE1100B96ACB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57B61AAACE1100B96ACB /* SecondViewController.m */; };
 		196F57BA1AAACE1100B96ACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 196F57B81AAACE1100B96ACB /* Main.storyboard */; };
 		196F57BC1AAACE1100B96ACB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 196F57BB1AAACE1100B96ACB /* Images.xcassets */; };
 		196F57BF1AAACE1100B96ACB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 196F57BD1AAACE1100B96ACB /* LaunchScreen.xib */; };
 		196F57CB1AAACE1100B96ACB /* TheSpotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196F57CA1AAACE1100B96ACB /* TheSpotTests.m */; };
+		196F57D51AAACE2300B96ACB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196F57D41AAACE2300B96ACB /* CoreLocation.framework */; };
+		196F57D71AAACE2D00B96ACB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196F57D61AAACE2D00B96ACB /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,16 +33,14 @@
 		196F57AD1AAACE1100B96ACB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		196F57AF1AAACE1100B96ACB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		196F57B01AAACE1100B96ACB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		196F57B21AAACE1100B96ACB /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		196F57B31AAACE1100B96ACB /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		196F57B51AAACE1100B96ACB /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		196F57B61AAACE1100B96ACB /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		196F57B91AAACE1100B96ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		196F57BB1AAACE1100B96ACB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		196F57BE1AAACE1100B96ACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		196F57C41AAACE1100B96ACB /* TheSpotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheSpotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		196F57C91AAACE1100B96ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		196F57CA1AAACE1100B96ACB /* TheSpotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheSpotTests.m; sourceTree = "<group>"; };
+		196F57D41AAACE2300B96ACB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		196F57D61AAACE2D00B96ACB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196F57D71AAACE2D00B96ACB /* MapKit.framework in Frameworks */,
+				196F57D51AAACE2300B96ACB /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +66,8 @@
 		196F579F1AAACE1100B96ACB = {
 			isa = PBXGroup;
 			children = (
+				196F57D61AAACE2D00B96ACB /* MapKit.framework */,
+				196F57D41AAACE2300B96ACB /* CoreLocation.framework */,
 				196F57AA1AAACE1100B96ACB /* TheSpot */,
 				196F57C71AAACE1100B96ACB /* TheSpotTests */,
 				196F57A91AAACE1100B96ACB /* Products */,
@@ -86,10 +88,6 @@
 			children = (
 				196F57AF1AAACE1100B96ACB /* AppDelegate.h */,
 				196F57B01AAACE1100B96ACB /* AppDelegate.m */,
-				196F57B21AAACE1100B96ACB /* FirstViewController.h */,
-				196F57B31AAACE1100B96ACB /* FirstViewController.m */,
-				196F57B51AAACE1100B96ACB /* SecondViewController.h */,
-				196F57B61AAACE1100B96ACB /* SecondViewController.m */,
 				196F57B81AAACE1100B96ACB /* Main.storyboard */,
 				196F57BB1AAACE1100B96ACB /* Images.xcassets */,
 				196F57BD1AAACE1100B96ACB /* LaunchScreen.xib */,
@@ -224,9 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				196F57B71AAACE1100B96ACB /* SecondViewController.m in Sources */,
 				196F57B11AAACE1100B96ACB /* AppDelegate.m in Sources */,
-				196F57B41AAACE1100B96ACB /* FirstViewController.m in Sources */,
 				196F57AE1AAACE1100B96ACB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "ResultsTableViewController.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *searchText;
+
+
+
+@interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+
+
+// Interface Properties
 @property (strong, nonatomic) NSMutableArray *matchingItems;
-
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UITextField *searchText;
+
+
 - (IBAction)textFieldReturn:(id)sender;
 
 

@@ -10,8 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewController.h"
-
-
+#import <AddressBook/AddressBook.h>
+#import "Annotation.h"
 
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -23,7 +23,16 @@
 @property (strong, nonatomic) IBOutlet UITextField *searchText;
 
 
+// Address Properties
+@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *city;
+@property (strong, nonatomic) NSString *state;
+@property (strong, nonatomic) NSString *zip;
+
+
 - (IBAction)textFieldReturn:(id)sender;
+
+
 
 
 @end

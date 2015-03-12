@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "ResultsTableViewCell.h"
+#import "DetailsViewController.h"
 
 
 @interface ResultsTableViewController : UITableViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>

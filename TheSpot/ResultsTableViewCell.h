@@ -15,4 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 
+-(IBAction)addPOI:(id)sender;
+
+
 @end

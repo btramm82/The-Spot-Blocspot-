@@ -63,7 +63,29 @@
 
 }
 
+#pragma mark - Navigation
+- (IBAction)addPOIButtonClicked:(UIButton *)sender {
+    NSLog(@"Add POI button clicked");
+    [self performSegueWithIdentifier:@"addPOISegue" sender:sender];
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton*)sender {
+    
+    //    NSLog(@"The sender is %@", sender);
+    if ([[segue identifier] isEqualToString:@"addPOISegue"]) {
+        DetailsViewController *destinationVC = segue.destinationViewController;
+        
+        // This was added
+        CGPoint point = [sender convertPoint:CGPointZero toView:self.tableView];
+        // And referenced in here
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        NSLog(@"NSIndexPath *indexPath's index is %@", indexPath);
+        MKMapItem *item = _mapItems[indexPath.row];
+        NSLog(@"ResultsTVC item is %@", item);
+        destinationVC.item = item;
+    }
+    
+}
     
 
 /*

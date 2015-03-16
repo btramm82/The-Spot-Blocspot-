@@ -10,14 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
 
-
-
-
-
 @interface Annotation : NSObject <MKAnnotation, MKMapViewDelegate, CLLocationManagerDelegate>
-
-
-
 
 @property (nonatomic, strong, readonly) MKMapItem *item;
 

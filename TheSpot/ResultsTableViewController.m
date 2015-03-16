@@ -9,6 +9,7 @@
 #import "ResultsTableViewController.h"
 #import "ResultsTableViewCell.h"
 
+
 @interface ResultsTableViewController ()
 
 @end
@@ -69,6 +70,7 @@
     [self performSegueWithIdentifier:@"addPOISegue" sender:sender];
 }
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton*)sender {
     
     //    NSLog(@"The sender is %@", sender);
@@ -82,11 +84,10 @@
         NSLog(@"NSIndexPath *indexPath's index is %@", indexPath);
         MKMapItem *item = _mapItems[indexPath.row];
         NSLog(@"ResultsTVC item is %@", item);
-        destinationVC.item = item;
+        destinationVC.item= item;
     }
     
 }
-    
 
 /*
 // Override to support conditional editing of the table view.

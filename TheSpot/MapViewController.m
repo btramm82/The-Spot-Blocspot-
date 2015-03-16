@@ -15,6 +15,8 @@
 @property (strong, nonatomic) ResultsTableViewController *searchResultsController;
 
 
+
+
 @end
 
 @implementation MapViewController
@@ -101,6 +103,9 @@ typedef enum : NSInteger {
             pinView.canShowCallout = YES;
             pinView.pinColor = MKPinAnnotationColorGreen;
             pinView.animatesDrop = YES;
+            pinView.image = [UIImage imageNamed:@"pin.png"];
+            pinView.frame = CGRectMake(0, 0, 25, 30);
+            pinView.calloutOffset = CGPointMake(0, 32);
             
             pinView.rightCalloutAccessoryView     = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             pinView.rightCalloutAccessoryView.tag = kCallOutAccessoryRight;
@@ -121,25 +126,19 @@ typedef enum : NSInteger {
     //here, can set annotation info in some property of detailView
     
     if (control.tag == kCallOutAccessoryRight)  {
-        
-        
-        NSLog(@"Present info sheet for %@ here", [view.annotation title]);
+        Annotation *myAnnotation = (Annotation *)view.annotation;
+        self.item = myAnnotation.item;
+        [self performSegueWithIdentifier:@"Show Details" sender:view];
     }
     else if (control.tag == kCallOutAccessoryLeft) {
-        
-        // This will be used for later most likely to add item to category
-        Annotation *myAnnotation = view.annotation;
+        Annotation *myAnnotation = (Annotation *)view.annotation;
         NSAssert([myAnnotation isKindOfClass:[Annotation class]],@"Annotation should be MapItemAnnotation: %@", myAnnotation);
         
-        [myAnnotation.item openInMapsWithLaunchOptions:@{MKLaunchOptionsMapCenterKey:[NSValue valueWithMKCoordinate:mapView.region.center], MKLaunchOptionsMapSpanKey:[NSValue valueWithMKCoordinateSpan:mapView.region.span],MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving}];
-        
-        NSLog(@"Do whatever you want if left accessory tapped");
+        [myAnnotation.item openInMapsWithLaunchOptions:@{MKLaunchOptionsMapCenterKey: [NSValue valueWithMKCoordinate:mapView.region.center], MKLaunchOptionsMapSpanKey:[NSValue valueWithMKCoordinateSpan:mapView.region.span],MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving}];
     }
-}
+    NSLog(@"Do whatever you want if left accessory tapped");
+    }
 
-
-
-    
 
 #pragma mark - CLLocationManagerDelegate methods
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -166,10 +165,16 @@ typedef enum : NSInteger {
                        [_matchingItems addObject:item];
                        
                        
+                       
+                       
+                       
+                   
+        
             Annotation *annotation = [[Annotation alloc] initWithMapItem:item];
             [_mapView addAnnotation:annotation];
                 NSLog(@"name = %@", item.name);
                 NSLog(@"Phone = %@", item.phoneNumber);
+              
             }
         if ([_matchingItems count]) {
             _searchResultsController.mapItems = _matchingItems;
@@ -193,13 +198,15 @@ typedef enum : NSInteger {
 
 #pragma mark - Segue
 
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"DisplaySearchResults"]) {
         ResultsTableViewController *searchResults = [segue destinationViewController];
         searchResults.mapItems = _matchingItems;
     }
+    if ([[segue identifier] isEqualToString:@"Show Details"]) {
+        DetailsViewController *destinationVC = segue.destinationViewController;
+        destinationVC.item= _item;
+    }
 }
-
-
-
 @end

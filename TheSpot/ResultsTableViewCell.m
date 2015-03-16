@@ -20,9 +20,7 @@
     // Configure the view for the selected state
 }
 
--(IBAction)addPOI:(id)sender {
-    NSLog(@"Add POI clicked");
-}
+
 
 
 @end

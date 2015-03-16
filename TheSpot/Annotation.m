@@ -10,9 +10,6 @@
 
 @implementation Annotation 
 
-
-
-
 - (id)initWithMapItem:(MKMapItem *)item {
     self = [super init];
     if (self) {

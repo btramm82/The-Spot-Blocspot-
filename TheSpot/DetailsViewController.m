@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 TDesigns. All rights reserved.
 //
 
+
 #import "DetailsViewController.h"
+
 
 @interface DetailsViewController ()
 
@@ -14,17 +16,18 @@
 
 @implementation DetailsViewController
 
+//-(MKMapItem *) item {
+//    MKMapItem *item = [DataSource sharedInstance].item;
+//    return item;
+//}
+
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+// Name
+    self.detailsName.text = [self item].name;
     
-    // Name
-    self.detailsName.text = _item.placemark.name;
-    
-   
-    
-    // Address
-    MKPlacemark *placemark = _item.placemark;
+// Address
+    MKPlacemark *placemark = [self item].placemark;
     NSDictionary *address = placemark.addressDictionary;
     NSString *addressString = @"";
     NSString *name = @"";
@@ -44,35 +47,24 @@
     zip = [address objectForKey:@"Zip"] ? [address objectForKey:@"Zip"] : @"";
     country = [address objectForKey:@"Country"] ? [address objectForKey:@"Country"] : @"";
     url = [address objectForKey:@"url"] ? [address objectForKey:@"url"] : @"";
-
-    addressString = [NSString stringWithFormat:@"%@, %@, \n %@, %@, %@, %@", subThoroughfare, thoroughfare, city, state, zip, country];
     
+    addressString = [NSString stringWithFormat:@"%@, %@, \n %@, %@, %@, %@", subThoroughfare, thoroughfare, city, state, zip, country];
     self.detailsAddress.text = addressString;
     
-    // Phone Number
-    self.detailsPhone.text = _item.phoneNumber;
+// Phone Number
+    self.detailsPhone.text = [self item].phoneNumber;
     
-    //Website
-    NSString *urlString = [_item.url absoluteString];
+//Website
+    NSString *urlString = [[self item].url absoluteString];
     self.detailsURL.text = urlString;
-    
-    ;
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

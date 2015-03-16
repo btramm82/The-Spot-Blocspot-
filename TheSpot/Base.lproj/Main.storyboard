@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Local Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-qx-XfV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Local Search" textAlignment="center" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OaV-qx-XfV">
                                 <rect key="frame" x="0.0" y="64" width="320" height="30"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -46,6 +46,7 @@
                     <connections>
                         <outlet property="mapView" destination="ikA-JC-K5a" id="HDN-kf-fyT"/>
                         <outlet property="searchText" destination="OaV-qx-XfV" id="nED-Bc-djw"/>
+                        <segue destination="ynr-WF-xFV" kind="push" identifier="Show Details" id="7Qw-G5-QRt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -92,13 +93,13 @@
                                                 <constraint firstAttribute="width" constant="163" id="FCW-fj-fuO"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPM-pg-txs">
                                             <rect key="frame" x="8" y="37" width="163" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -150,11 +151,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-bk-g1j">
-                                <rect key="frame" x="16" y="481" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ab-zo-4aE">
                                 <rect key="frame" x="16" y="309" width="97" height="30"/>
                                 <constraints>
@@ -177,7 +173,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SXl-8W-Dm7" firstAttribute="top" secondItem="xOI-so-upJ" secondAttribute="bottom" constant="24" id="Amq-en-6j0"/>
                             <constraint firstItem="Qui-eM-IOA" firstAttribute="leading" secondItem="gLo-IB-uP3" secondAttribute="leadingMargin" constant="60" id="BBe-DT-zkL"/>
@@ -186,13 +182,10 @@
                             <constraint firstItem="pip-XN-wXj" firstAttribute="top" secondItem="sWR-90-ujb" secondAttribute="bottom" constant="53" id="J5h-Cm-aFK"/>
                             <constraint firstItem="sWR-90-ujb" firstAttribute="top" secondItem="Qui-eM-IOA" secondAttribute="bottom" constant="22" id="KH3-oM-n1Y"/>
                             <constraint firstItem="Qui-eM-IOA" firstAttribute="top" secondItem="SXl-8W-Dm7" secondAttribute="bottom" constant="8" symbolic="YES" id="R7u-P7-VOC"/>
-                            <constraint firstItem="Xju-SI-1Q2" firstAttribute="top" secondItem="yXf-bk-g1j" secondAttribute="bottom" constant="8" symbolic="YES" id="UOt-q8-jqU"/>
                             <constraint firstItem="sWR-90-ujb" firstAttribute="trailing" secondItem="SXl-8W-Dm7" secondAttribute="trailing" id="UQo-LD-mT6"/>
                             <constraint firstItem="SXl-8W-Dm7" firstAttribute="leading" secondItem="sWR-90-ujb" secondAttribute="leading" id="VdV-gJ-7MK"/>
                             <constraint firstItem="6ab-zo-4aE" firstAttribute="leading" secondItem="gLo-IB-uP3" secondAttribute="leadingMargin" id="eTp-Hn-6Je"/>
-                            <constraint firstItem="6ab-zo-4aE" firstAttribute="leading" secondItem="yXf-bk-g1j" secondAttribute="leading" id="fbL-Bt-AiW"/>
                             <constraint firstItem="6ab-zo-4aE" firstAttribute="leading" secondItem="pip-XN-wXj" secondAttribute="leading" id="hca-Pr-cgq"/>
-                            <constraint firstItem="sWR-90-ujb" firstAttribute="trailing" secondItem="yXf-bk-g1j" secondAttribute="trailing" id="k3L-xY-yIt"/>
                             <constraint firstItem="6ab-zo-4aE" firstAttribute="top" secondItem="pip-XN-wXj" secondAttribute="bottom" constant="18" id="mGR-lC-Ua8"/>
                             <constraint firstItem="Qui-eM-IOA" firstAttribute="centerX" secondItem="SXl-8W-Dm7" secondAttribute="centerX" id="mmv-9c-1HQ"/>
                         </constraints>
@@ -202,7 +195,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="detailsAddress" destination="sWR-90-ujb" id="eyy-Jn-szb"/>
-                        <outlet property="detailsCategory" destination="yXf-bk-g1j" id="ewZ-CM-oN9"/>
                         <outlet property="detailsName" destination="SXl-8W-Dm7" id="dma-15-A7g"/>
                         <outlet property="detailsNote" destination="6ab-zo-4aE" id="gYj-8o-3cQ"/>
                         <outlet property="detailsPhone" destination="pip-XN-wXj" id="8FM-IM-Yvx"/>
@@ -211,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EK4-w8-Gyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344" y="-286"/>
+            <point key="canvasLocation" x="1272" y="-304"/>
         </scene>
         <!--Map View-->
         <scene sceneID="eSj-8x-Phv">
@@ -260,4 +252,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Qw-G5-QRt"/>
+    </inferredMetricsTieBreakers>
 </document>

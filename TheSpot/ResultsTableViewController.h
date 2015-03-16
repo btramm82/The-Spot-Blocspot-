@@ -12,6 +12,7 @@
 #import "DetailsViewController.h"
 
 
+
 @interface ResultsTableViewController : UITableViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 

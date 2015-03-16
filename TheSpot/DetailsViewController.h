@@ -7,17 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "MapViewController.h"
+#import "DataSource.h"
+
+
+
 
 @interface DetailsViewController : UIViewController
-
 @property (strong, nonatomic) MKMapItem *item;
-@property (strong, nonatomic) IBOutlet UITextField *detailsName;
-@property (strong, nonatomic) IBOutlet UITextField *detailsAddress;
-@property (strong, nonatomic) IBOutlet UITextField *detailsNote;
-@property (strong, nonatomic) IBOutlet UITextField *detailsPhone;
-@property (strong, nonatomic) IBOutlet UITextField *detailsCategory;
-@property (strong, nonatomic) IBOutlet UITextField *detailsURL;
+@property (weak, nonatomic) IBOutlet UITextField *detailsName;
+@property (weak, nonatomic) IBOutlet UITextField *detailsURL;
+@property (weak, nonatomic) IBOutlet UITextField *detailsAddress;
+@property (weak, nonatomic) IBOutlet UITextField *detailsPhone;
+@property (weak, nonatomic) IBOutlet UITextField *detailsNote;
+
+
+
+
+
 
 
 

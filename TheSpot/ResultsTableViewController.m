@@ -74,7 +74,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton*)sender {
     
     //    NSLog(@"The sender is %@", sender);
-    if ([[segue identifier] isEqualToString:@"addPOISegue"]) {
+    if ([[segue identifier] isEqualToString:@"Show List"]) {
         DetailsViewController *destinationVC = segue.destinationViewController;
         
         // This was added
@@ -84,7 +84,7 @@
         NSLog(@"NSIndexPath *indexPath's index is %@", indexPath);
         MKMapItem *item = _mapItems[indexPath.row];
         NSLog(@"ResultsTVC item is %@", item);
-        destinationVC.item= item;
+        destinationVC.item = item;
     }
     
 }

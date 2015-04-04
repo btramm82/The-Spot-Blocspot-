@@ -9,18 +9,22 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
-#import "DataSource.h"
+#import "AppDelegate.h"
+#import "SavedPlacesTableViewController.h"
 
+@interface DetailsViewController : UIViewController <NSCoding>
 
+@property (nonatomic, strong) NSManagedObject *place;
 
-
-@interface DetailsViewController : UIViewController
 @property (strong, nonatomic) MKMapItem *item;
 @property (weak, nonatomic) IBOutlet UITextField *detailsName;
 @property (weak, nonatomic) IBOutlet UITextField *detailsURL;
 @property (weak, nonatomic) IBOutlet UITextField *detailsAddress;
+@property (weak, nonatomic) IBOutlet UITextField *detailsAddressTwo;
 @property (weak, nonatomic) IBOutlet UITextField *detailsPhone;
-@property (weak, nonatomic) IBOutlet UITextField *detailsNote;
+
+
+- (IBAction)saveDetails:(id)sender;
 
 
 

@@ -40,8 +40,8 @@
     [self.locationManager startUpdatingLocation];
     
     self.searchText.delegate = self;
-    UINavigationController *nVC = self.tabBarController.viewControllers[1];
-    _searchResultsController = (ResultsTableViewController *)nVC.topViewController;
+    //UINavigationController *nVC = self.tabBarController.viewControllers[1];
+    //_searchResultsController = (ResultsTableViewController *)nVC.topViewController;
 }
 
 -(void) viewDidLoad {
@@ -136,8 +136,8 @@ typedef enum : NSInteger {
         
         [myAnnotation.item openInMapsWithLaunchOptions:@{MKLaunchOptionsMapCenterKey: [NSValue valueWithMKCoordinate:mapView.region.center], MKLaunchOptionsMapSpanKey:[NSValue valueWithMKCoordinateSpan:mapView.region.span],MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving}];
     }
-    NSLog(@"Do whatever you want if left accessory tapped");
-    }
+
+}
 
 
 #pragma mark - CLLocationManagerDelegate methods
@@ -163,13 +163,8 @@ typedef enum : NSInteger {
                else
                    for (MKMapItem *item in response.mapItems) {
                        [_matchingItems addObject:item];
+                      
                        
-                       
-                       
-                       
-                       
-                   
-        
             Annotation *annotation = [[Annotation alloc] initWithMapItem:item];
             [_mapView addAnnotation:annotation];
                 NSLog(@"name = %@", item.name);
@@ -178,7 +173,7 @@ typedef enum : NSInteger {
             }
         if ([_matchingItems count]) {
             _searchResultsController.mapItems = _matchingItems;
-            [self.tabBarController setSelectedIndex:1];
+           [self.tabBarController setSelectedIndex:0];
         } else {
             // alertbox "no results found"
         }
@@ -187,11 +182,12 @@ typedef enum : NSInteger {
 
 
 #pragma mark - Map Actions
+
+
 - (IBAction)textFieldReturn:(id)sender {
     [sender resignFirstResponder];
     [_mapView removeAnnotations:[_mapView annotations]];
     [self performSearch];
-   // [self performSegueWithIdentifier:@"DisplaySearchResults" sender:self];
 
 }
 
@@ -200,11 +196,11 @@ typedef enum : NSInteger {
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"DisplaySearchResults"]) {
+    if ([[segue identifier] isEqualToString:@"Show List"]) {
         ResultsTableViewController *searchResults = [segue destinationViewController];
         searchResults.mapItems = _matchingItems;
-    }
-    if ([[segue identifier] isEqualToString:@"Show Details"]) {
+        
+    } if ([[segue identifier] isEqualToString:@"Show Details"]) {
         DetailsViewController *destinationVC = segue.destinationViewController;
         destinationVC.item= _item;
     }

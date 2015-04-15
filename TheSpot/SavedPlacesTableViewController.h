@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "DetailsViewController.h"
+#import "PlacesOfInterest.h"
 
 @interface SavedPlacesTableViewController : UITableViewController
+
+@property (nonatomic, strong) PlacesOfInterest *place;
 
 @end

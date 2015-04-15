@@ -40,15 +40,24 @@
     [self.locationManager startUpdatingLocation];
     
     self.searchText.delegate = self;
-    //UINavigationController *nVC = self.tabBarController.viewControllers[1];
-    //_searchResultsController = (ResultsTableViewController *)nVC.topViewController;
+  
+    if (self.place) {
+        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
+        myAnnotation.coordinate = CLLocationCoordinate2DMake([self.place.latitude doubleValue], [self.place.longitude doubleValue]);
+        myAnnotation.title = self.place.name;
+        myAnnotation.subtitle = self.place.address;
+        [self.searchText setHidden:YES];
+
+        [_mapView addAnnotation:myAnnotation];
+        NSLog(@"%@, %@, %f, %f", myAnnotation.title, myAnnotation.subtitle, myAnnotation.coordinate.latitude, myAnnotation.coordinate.longitude);
+    }
 }
 
 -(void) viewDidLoad {
     [super viewDidLoad];
     _mapView.delegate = self;
     _mapView.showsUserLocation = YES;
-    
+   
 }
     
 - (void)didReceiveMemoryWarning {
@@ -74,12 +83,12 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 
-
-// Add User Location Annotaion
+    // Add User Location Annotaion
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = userLocation.coordinate;
     point.title = @"Current location";
 }
+
 
 
 typedef enum : NSInteger {
@@ -96,10 +105,14 @@ typedef enum : NSInteger {
         static NSString *identifier = @"customAnnotationView";
         
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        
-        if (!pinView)
-        {
+    
+        if (!pinView) {
             pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
+            if (self.place) {
+                pinView.canShowCallout = YES;
+                pinView.pinColor = MKPinAnnotationColorRed;
+                pinView.animatesDrop = YES;
+            } else {
             pinView.canShowCallout = YES;
             pinView.pinColor = MKPinAnnotationColorGreen;
             pinView.animatesDrop = YES;
@@ -112,12 +125,10 @@ typedef enum : NSInteger {
             
             pinView.leftCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
             pinView.leftCalloutAccessoryView.tag  = kCallOutAccessoryLeft;
-        }
-        else
-        {
+            }
+        } else {
             pinView.annotation = annotation;
         }
-        
         return pinView;
     }
 
@@ -142,15 +153,15 @@ typedef enum : NSInteger {
 
 #pragma mark - CLLocationManagerDelegate methods
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-}
+    }
 
 #pragma mark - Map Searching
 
 - (void) performSearch {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = _searchText.text;
-    request.region = _mapView.region;
+        MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+        request.naturalLanguageQuery = _searchText.text;
+        request.region = _mapView.region;
+
 
     _matchingItems = [[NSMutableArray alloc] init];
     
@@ -180,9 +191,7 @@ typedef enum : NSInteger {
     }];
 }
 
-
 #pragma mark - Map Actions
-
 
 - (IBAction)textFieldReturn:(id)sender {
     [sender resignFirstResponder];
@@ -201,6 +210,9 @@ typedef enum : NSInteger {
         searchResults.mapItems = _matchingItems;
         
     } if ([[segue identifier] isEqualToString:@"Show Details"]) {
+        DetailsViewController *destinationVC = segue.destinationViewController;
+        destinationVC.item= _item;
+    } if ([[segue identifier] isEqualToString:@"ShowDetailsTwo"]) {
         DetailsViewController *destinationVC = segue.destinationViewController;
         destinationVC.item= _item;
     }

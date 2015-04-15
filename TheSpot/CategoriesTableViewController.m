@@ -1,19 +1,19 @@
 //
-//  SavedPlacesTableViewController.m
+//  CategoriesTableViewController.m
 //  TheSpot
 //
-//  Created by BRIAN TRAMMELL on 4/1/15.
+//  Created by BRIAN TRAMMELL on 4/6/15.
 //  Copyright (c) 2015 TDesigns. All rights reserved.
 //
 
-#import "SavedPlacesTableViewController.h"
+#import "CategoriesTableViewController.h"
 
-@interface SavedPlacesTableViewController ()
-@property (nonatomic, strong) NSMutableArray *placesOfInterest;
+@interface CategoriesTableViewController ()
+@property (nonatomic, strong) NSMutableArray *locationCategory;
 
 @end
 
-@implementation SavedPlacesTableViewController
+@implementation CategoriesTableViewController
 
 #pragma mark - Core Data
 - (NSManagedObjectContext *)managedObjectContext {
@@ -25,20 +25,21 @@
     return context;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // Fetch the places from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"PlacesOfInterest"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"LocationCategory"];
+    self.locationCategory = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
-    self.placesOfInterest = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     [self.tableView reloadData];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,47 +56,50 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.placesOfInterest.count;
+    return self.locationCategory.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSManagedObject *placesOfInterest = [self.placesOfInterest objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@",[placesOfInterest valueForKey:@"name"]]];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@", [placesOfInterest valueForKey:@"phoneNumber"]]];
+    NSManagedObject *locationCategory = [self.locationCategory objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@",[locationCategory valueForKey:@"categoryName"]]];
+    
     
     return cell;
 }
 
 
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSManagedObjectContext *context = [self managedObjectContext];
-    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete object from database
-        [context deleteObject:[self.placesOfInterest objectAtIndex:indexPath.row]];
-       
+        [context deleteObject:[self.locationCategory objectAtIndex:indexPath.row]];
+        
         NSError *error = nil;
         if (![context save:&error]) {
             NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
             return;
         }
-        // Remove Object from Table View
-        [self.placesOfInterest removeObjectAtIndex:indexPath.row];
+        // Remove device from table view
+        [self.locationCategory removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
 
 /*
 // Override to support rearranging the table view.
@@ -110,17 +114,13 @@
     return YES;
 }
 */
-
-
 #pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"Edit Places"]) {
-        NSManagedObject *selectedPlace = [self.placesOfInterest objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        DetailsViewController *destViewController = segue.destinationViewController;
-        destViewController.place = selectedPlace;
-    }
-}
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     if ([[segue identifier] isEqualToString:@"categoryDetails"]) {
+     NSManagedObject *selectedCat = [self.locationCategory objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+     CategoryDetailsTableViewController *destViewController = segue.destinationViewController;
+     destViewController.categoryName = (LocationCategory *)selectedCat;
+     }
+ }
 
 @end

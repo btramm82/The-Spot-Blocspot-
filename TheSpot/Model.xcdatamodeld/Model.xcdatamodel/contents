@@ -8,15 +8,17 @@
     <entity name="PlacesOfInterest" representedClassName="PlacesOfInterest" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addressTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="locationCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationCategory" inverseName="placesOfInterest" inverseEntity="LocationCategory" syncable="YES"/>
     </entity>
     <elements>
         <element name="LocationCategory" positionX="-36" positionY="9" width="128" height="88"/>
-        <element name="PlacesOfInterest" positionX="-279" positionY="-63" width="128" height="163"/>
+        <element name="PlacesOfInterest" positionX="-279" positionY="-63" width="128" height="195"/>
     </elements>
 </model>

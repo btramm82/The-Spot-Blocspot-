@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
+#import "AppDelegate.h"
+#import "PlacesOfInterest.h"
+
 
 @interface Annotation : NSObject <MKAnnotation, MKMapViewDelegate, CLLocationManagerDelegate>
 
-@property (nonatomic, strong, readonly) MKMapItem *item;
+@property (nonatomic, strong) MKMapItem *item;
+@property (nonatomic,strong) PlacesOfInterest *place;
 
 -(id)initWithMapItem:(MKMapItem *)item;
 -(NSString *)title;

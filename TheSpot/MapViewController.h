@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ResultsTableViewController.h"
@@ -14,10 +15,12 @@
 #import <AddressBook/AddressBook.h>
 #import "Annotation.h"
 #import "DetailsViewController.h"
+#import "PlacesOfInterest.h"
 
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
+@property (nonatomic, strong) PlacesOfInterest *place;
 
 // Interface Properties
 @property (strong, nonatomic) NSMutableArray *matchingItems;

@@ -2,7 +2,7 @@
 //  LocationCategory.m
 //  TheSpot
 //
-//  Created by BRIAN TRAMMELL on 4/1/15.
+//  Created by BRIAN TRAMMELL on 4/6/15.
 //  Copyright (c) 2015 TDesigns. All rights reserved.
 //
 
